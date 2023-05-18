@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Deposit calculator</title>
+  </head>
+  <body>
+    <div id="maindiv" class="animDiv">
+      <input
+        type="number"
+        id="inputDeposit"
+        placeholder="Deposit Amount"
+        style="margin-bottom: 5px"
+        required
+      /><br />
+      <input
+        type="number"
+        id="inputYears"
+        placeholder="Number of Years"
+        style="margin-bottom: 5px"
+        required
+      /><br />
+      <input
+        type="number"
+        id="inputRate"
+        placeholder="Annual Interest Rate, %"
+        style="margin-bottom: 5px"
+        required
+      /><br />
+      <div id="buttons">
+        <button type="submit" id="submit">Calculate</button>
+        <button id="clear">Clear</button>
+      </div>
+      <p id="myP"></p>
+    </div>
+    <style>
+      body {
+        background-color: #1c2630;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #maindiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        margin-top: 2em;
+        padding-left: 0.7em;
+        padding-right: 0.7em;
+        padding-top: 2em;
+        background-color: #1c2630;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5.5px);
+        -webkit-backdrop-filter: blur(5.5px);
+        border: none;
+        box-shadow: 5px 7px 10px rgba(17, 17, 17, 0.5);
+      }
+
+      #inputDeposit {
+        margin-top: 60px;
+      }
+      #myP {
+        color: rgba(255, 255, 255, 0.459);
+        max-width: 400px;
+        font-size: 1.2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-height: 70%;
+        max-width: 90%;
+      }
+      h3 {
+        animation: slide-in-bottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+      }
+      @keyframes slide-in-bottom {
+        0% {
+          transform: translateY(250px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      input {
+        padding: 1em;
+        text-align: center;
+        font-size: large;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border: none;
+      }
+
+      input:focus {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      button {
+        padding: 0.5em;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 6px;
+        font-size: large;
+        margin-right: 10px;
+        border: none;
+        margin-top: 3em;
+      }
+      #clear:hover {
+        cursor: pointer;
+        box-shadow: 5px 7px 10px rgba(17, 17, 17, 0.5);
+      }
+
+      #submit:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 8px 14px 0 rgba(0, 0, 0, 0.29);
+      }
+
+      .animDiv {
+        animation: slide-in-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @keyframes slide-in-top {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          background: rgba(255, 255, 255, 0.17);
+          opacity: 1;
+        }
+      }
+
+      .animDivOut {
+        animation: slide-out-top 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      }
+
+      @keyframes slide-out-top {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-1000px);
+          opacity: 0;
+        }
+      }
+
+      #inputDeposit {
+        animation: slide-in-top 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @keyframes slide-in-top {
+        0% {
+          transform: translateY(-200px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      #inputYears {
+        animation: slide-in-top2 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @keyframes slide-in-top2 {
+        0% {
+          transform: translateY(-300px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      #inputRate {
+        animation: slide-in-top3 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @keyframes slide-in-top3 {
+        0% {
+          transform: translateY(-400px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      #submit {
+        animation: fade-in 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      #clear {
+        background-color: rgb(219, 162, 55);
+        animation: fade-in2 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+
+      @keyframes fade-in2 {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    <script>
+      function calc() {
+        let amount = 0;
+        let depositEntered = parseFloat(
+          document.getElementById("inputDeposit").value
+        );
+        let yearsEntered = parseFloat(
+          document.getElementById("inputYears").value
+        );
+        let rateEntered = parseFloat(
+          document.getElementById("inputRate").value
+        );
+        let interestRate = rateEntered / 100;
+
+        if (
+          depositEntered < 1 ||
+          yearsEntered < 1 ||
+          isNaN(depositEntered) ||
+          isNaN(yearsEntered) ||
+          isNaN(rateEntered)
+        ) {
+          return;
+        } else {
+          let num = 1 + interestRate;
+          let stepValue = Math.pow(num, yearsEntered);
+          let amount = (depositEntered * stepValue).toFixed(2);
+
+          removeElem();
+
+          let displayText = document.createElement("h3");
+          const textnode = document.createTextNode(
+            `Total interest in ${yearsEntered} year(s) = $${(
+              amount - depositEntered
+            ).toFixed(2)}.
+            
+            Total deposit plus interest = $${amount}`
+          );
+          displayText.appendChild(textnode);
+          myP.appendChild(displayText);
+          myP.appendChild(clearBtn);
+        }
+      }
+
+      function clear() {
+        window.location.reload();
+      }
+
+      function removeElem() {
+        document.getElementById("inputDeposit").remove();
+        document.getElementById("inputYears").remove();
+        document.getElementById("submit").remove();
+        document.getElementById("inputRate").remove();
+        document.getElementById("clear").remove();
+      }
+      let clearBtn = document.getElementById("clear");
+      let submitBtn = document.getElementById("submit");
+      let mainDiv = document.getElementById("maindiv");
+      let myP = document.getElementById("myP");
+
+      submitBtn.addEventListener("click", calc);
+
+      clearBtn.addEventListener("click", clear);
+    </script>
+  </body>
+</html>
